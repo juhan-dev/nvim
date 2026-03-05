@@ -44,6 +44,10 @@
     "roslyn.nvim": {
       "rev": "7deb9bb5b6afcb3c03c70741c6d364ffd8b59bda",
       "src": "https://github.com/seblyng/roslyn.nvim"
+    },
+    "which-key.nvim": {
+      "rev": "3aab2147e74890957785941f0c1ad87d0a44c15a",
+      "src": "https://github.com/folke/which-key.nvim"
     }
   }
 }

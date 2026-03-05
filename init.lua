@@ -412,15 +412,16 @@ vim.api.nvim_create_autocmd("FileType", {
 -- ============================================================================
 
 vim.pack.add({
-	"https://www.github.com/lewis6991/gitsigns.nvim",
-	"https://www.github.com/echasnovski/mini.nvim",
-	"https://www.github.com/ibhagwan/fzf-lua",
 	"https://www.github.com/nvim-tree/nvim-tree.lua",
 	{
 		src = "https://github.com/nvim-treesitter/nvim-treesitter",
 		branch = "main",
 		build = ":TSUpdate",
 	},
+	"https://www.github.com/ibhagwan/fzf-lua",
+	"https://www.github.com/lewis6991/gitsigns.nvim",
+	"https://www.github.com/echasnovski/mini.nvim",
+  "https://github.com/folke/which-key.nvim",
 	-- Language Server Protocols
 	"https://www.github.com/neovim/nvim-lspconfig",
 	"https://github.com/mason-org/mason.nvim",
@@ -575,13 +576,6 @@ require("gitsigns").setup({
 	current_line_blame = false,
 })
 
-require("mason").setup({
-    registries = {
-        "github:mason-org/mason-registry",
-        "github:Crashdummyy/mason-registry",
-    },
- })
-
 vim.keymap.set("n", "]h", function()
 	require("gitsigns").next_hunk()
 end, { desc = "Next git hunk" })
@@ -606,6 +600,19 @@ end, { desc = "Toggle inline blame" })
 vim.keymap.set("n", "<leader>hd", function()
 	require("gitsigns").diffthis()
 end, { desc = "Diff this" })
+
+require("which-key").setup({})
+
+vim.keymap.set("n", "<leader>?", function()
+  require("which-key").show({ global = false })
+end, { desc = "Help with Keymaps" })
+
+require("mason").setup({
+    registries = {
+        "github:mason-org/mason-registry",
+        "github:Crashdummyy/mason-registry",
+    },
+ })
 
 -- Default Roslyn solution picker -> Pick first solution available
 local solution_picker = function (target)
